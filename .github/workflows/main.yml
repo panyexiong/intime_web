@@ -35,9 +35,9 @@ jobs:
       - name: copy dist file with scp
         uses: appleboy/scp-action@v0.0.1
         with:
-          host: ${{ HUAWEIYUN_HOST }}
-          username: ${{ HUAWEIYUN_USER }}
-          password: ${{ HUAWEIYUN_PASSWORD }}
+          host: ${{ secrets.HUAWEIYUN_HOST }}
+          username: ${{ secrets.HUAWEIYUN_USER }}
+          password: ${{ secrets.HUAWEIYUN_PASSWORD }}
           port: 22
           source: 'docs/'
-          target: ${{ HUAWEIYUN_TARGET }}
+          target: ${{ secrets.HUAWEIYUN_TARGET }}
