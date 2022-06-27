@@ -37,7 +37,6 @@ jobs:
         with:
           server: ${{ secrets.HUAWEIYUN_HOST }}
           username: ${{ secrets.HUAWEIYUN_USER }}
-          password: ${{ secrets.HUAWEIYUN_PASSWORD }}
           ssh_private_key: ${{ secrets.HUAWEIYUN_SSH_PRIVATE_KEY }}
           port: 22
           local_path: "docs/"
