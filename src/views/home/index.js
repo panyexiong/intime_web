@@ -1,5 +1,5 @@
 export default {
     render(h) {
-        return h('div',{},[123])
+        return h('div',{},['scc da sha b'])
     }
 }
