@@ -32,12 +32,22 @@ jobs:
         run: npm install
       - name: build app
         run: npm run build
-      - name: copy dist file with sftp
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.2
+      - name: copy dist file with ssh
+        uses: easingthemes/ssh-deploy@v2.2.11
         with:
-          server: ${{ secrets.HUAWEIYUN_HOST }}
-          username: ${{ secrets.HUAWEIYUN_USER }}
-          ssh_private_key: ${{ secrets.HUAWEIYUN_SSH_PRIVATE_KEY }}
-          port: 22
-          local_path: "docs/"
-          remote_path: ${{ secrets.HUAWEIYUN_TARGET }}
+          # Private Key
+          SSH_PRIVATE_KEY: ${{ secrets.HUAWEIYUN_SSH_PRIVATE_KEY }}
+          # Remote host
+          REMOTE_HOST: ${{ secrets.HUAWEIYUN_HOST }}
+          # Remote user
+          REMOTE_USER: ${{ secrets.HUAWEIYUN_USER }}
+          # Remote port
+          REMOTE_PORT: # optional, default is 22
+          # Source directory
+          SOURCE: "/dist"
+          # Target directory
+          TARGET: ${{ secrets.HUAWEIYUN_TARGET }}
+          # Arguments to pass to rsync
+          ARGS: # optional, default is -rltgoDzvO
+          # An array of folder to exclude
+          EXCLUDE: # optional, default is
