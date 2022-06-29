@@ -4,7 +4,7 @@ export default {
     name: 'navigation',
     data() {
         return {
-            items: ['btn1', 'btn2', 'btn3']
+            items: ['money', 'time', 'others']
         }
     },
     render(h) {
@@ -12,23 +12,36 @@ export default {
             staticClass: 'nav'
         }, [
             this.render_logo(h),
-            this.items.map(item => this.render_item(h, item))
+            this.render_items(h),
+
         ])
     },
     methods: {
         render_logo(h) {
-            return h('div', {}, [
+            return h('div', {
+                staticClass: 'div__img--logo',
+            }, [
                 h('img', {
                     staticClass: 'logo',
-                    attrs:{
+                    attrs: {
                         src: logo,
                     },
-
                 })
             ])
         },
+        render_items(h) {
+            return h('div', {
+                staticClass: 'nav__items'
+            }, [
+                this.items.map(item => this.render_item(h, item))
+            ])
+        },
         render_item(h, item) {
-            return h('div', {}, [item])
+            return h('div', {
+                staticClass: 'nav__item'
+            }, [
+                item
+            ])
         }
     }
 }
