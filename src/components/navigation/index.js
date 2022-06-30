@@ -1,7 +1,14 @@
-import logo from '/src/assets/爱因斯坦搞怪.gif';
+import ayst1 from '/src/assets/ayst1.png';
+// import ayst3 from '/src/assets/ayst3.png';
+import ayst5 from '/src/assets/ayst5.png';
 
 export default {
     name: 'navigation',
+    computed:{
+        logo_img(){
+            return this.show_items ? ayst5 : ayst1;
+        }
+    },
     data() {
         return {
             items: ['money', 'time', 'others'],
@@ -16,7 +23,9 @@ export default {
                 mouseleave: () => this.show_items = false,
             }
         }, [
+            
             this.render_logo(h),
+            
             h('transition',{
                 props: {
                     name: 'items-transition',
@@ -36,7 +45,7 @@ export default {
                 h('img', {
                     staticClass: 'logo',
                     attrs: {
-                        src: logo,
+                        src: this.logo_img,
                     },
                 })
             ])
