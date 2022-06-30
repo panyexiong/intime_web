@@ -4,8 +4,8 @@ import ayst5 from '/src/assets/ayst5.png';
 
 export default {
     name: 'navigation',
-    computed:{
-        logo_img(){
+    computed: {
+        logo_img() {
             return this.show_items ? ayst5 : ayst1;
         }
     },
@@ -15,26 +15,46 @@ export default {
             show_items: false,
         }
     },
+    directives: {
+        drag: {
+            bind(el) {
+                console.log(el);
+                el.onmousedown = (e) => {
+                    var disx = e.clientX - el.offsetLeft
+                    var disy = e.clientY - el.offsetTop
+                    document.onmousemove = function (e) {
+                        el.style.left = e.clientX - disx + 'px'
+                        el.style.top = e.clientY - disy + 'px'
+                    }
+                    document.onmouseup = function () {
+                        document.onmousemove = document.onmouseup = null
+                    }
+                }
+                
+            }
+        }
+    },
     render(h) {
         return h('div', {
             staticClass: 'nav',
+            directives: [{ name: 'drag' }],
             on: {
                 mouseenter: () => this.show_items = true,
                 mouseleave: () => this.show_items = false,
             }
         }, [
-            
+
             this.render_logo(h),
-            
-            h('transition',{
+
+            h('transition', {
                 props: {
                     name: 'items-transition',
                     mode: "out-in",
                 }
-            },[
+            }, [
                 this.render_items(h),
             ])
-            
+
         ])
     },
     methods: {
