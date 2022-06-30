@@ -17,7 +17,15 @@ export default {
             }
         }, [
             this.render_logo(h),
-            this.render_items(h),
+            h('transition',{
+                props: {
+                    name: 'items-transition',
+                    mode: "out-in",
+                }
+            },[
+                this.render_items(h),
+            ])
+            
         ])
     },
     methods: {

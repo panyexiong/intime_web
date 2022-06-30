@@ -61,3 +61,11 @@ body {
   display: flex;
   align-items: flex-start;
 }
+
+
+.items-transition-enter-active, .items-transition-leave-active {
+  transition: opacity .5s;
+}
+.items-transition-enter, .items-transition-leave-to {
+  opacity: 0;
+}
