@@ -1,10 +1,26 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import './css/navigation.scss'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import './css/main.scss';
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import specific icons */
+import { faUserSecret,  fas} from '@fortawesome/free-solid-svg-icons'
 
 Vue.config.productionTip = false
+
+
+
+/* add icons to the library */
+library.add(faUserSecret, fas)
+
+/* add font awesome icon component */
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 
 new Vue({
   router,

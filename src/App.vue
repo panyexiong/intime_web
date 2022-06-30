@@ -8,6 +8,7 @@
 <script>
 import Navigation from "./components/navigation";
 
+
 export default {
   components: {Navigation}
 }

@@ -1,5 +1,4 @@
 import ayst1 from '/src/assets/ayst1.png';
-// import ayst3 from '/src/assets/ayst3.png';
 import ayst5 from '/src/assets/ayst5.png';
 
 export default {
@@ -11,26 +10,24 @@ export default {
     },
     data() {
         return {
-            items: ['money', 'time', 'others'],
             show_items: false,
         }
     },
     directives: {
         drag: {
             bind(el) {
-                console.log(el);
                 el.onmousedown = (e) => {
-                    var disx = e.clientX - el.offsetLeft
-                    var disy = e.clientY - el.offsetTop
+                    let disX = e.clientX - el.offsetLeft
+                    let disY = e.clientY - el.offsetTop
                     document.onmousemove = function (e) {
-                        el.style.left = e.clientX - disx + 'px'
-                        el.style.top = e.clientY - disy + 'px'
+                        el.style.left = e.clientX - disX + 'px'
+                        el.style.top = e.clientY - disY + 'px'
                     }
                     document.onmouseup = function () {
                         document.onmousemove = document.onmouseup = null
                     }
                 }
-                
+
             }
         }
     },
@@ -43,9 +40,7 @@ export default {
                 mouseleave: () => this.show_items = false,
             }
         }, [
-
             this.render_logo(h),
-
             h('transition', {
                 props: {
                     name: 'items-transition',
@@ -75,15 +70,40 @@ export default {
             return h('div', {
                 staticClass: 'nav__items'
             }, [
-                this.items.map(item => this.render_item(h, item))
+                nav_arr.map(item => this.render_item(h, item))
             ])
         },
         render_item(h, item) {
             return h('div', {
-                staticClass: 'nav__item'
+                staticClass: 'nav__item',
+                on: {
+                    click: () => nav_dict[item].router(this)
+                }
             }, [
-                item
+                // item,
+                h('font-awesome-icon',{
+                    props: {
+                        icon: nav_dict[item].icon
+                    }
+                })
             ])
         }
     }
 }
+
+const nav_dict = {
+    'home': {
+        router: (vm) => vm.$router.push({name: 'Home'}),
+        icon: 'fa-solid fa-house fa-2x'
+    },
+    'money': {
+        router: (vm) => vm.$router.push({name: 'Money'}),
+        icon: 'fa-solid fa-sack-dollar'
+    },
+    'time': {
+        router: (vm) => vm.$router.push({name: 'Time'}),
+        icon: 'fa-solid fa-stopwatch-20'
+    },
+}
+
+const nav_arr = Object.keys(nav_dict);

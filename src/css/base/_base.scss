@@ -1,0 +1,21 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // This defines what 1rem is
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  background-image: linear-gradient(to right top, $color-main-1, $color-main-2, $color-main-3, $color-main-4, $color-main-5, $color-main-6);
+}
+
+#app {
+  height: 100vh;
+}
