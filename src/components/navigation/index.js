@@ -94,7 +94,7 @@ export default {
 const nav_dict = {
     'home': {
         router: (vm) => vm.$router.push({name: 'Home'}),
-        icon: 'fa-solid fa-house fa-2x'
+        icon: 'fa-solid fa-house'
     },
     'money': {
         router: (vm) => vm.$router.push({name: 'Money'}),
