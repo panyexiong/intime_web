@@ -44,23 +44,35 @@
   align-items: center;
   justify-items: center;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 0.2rem;
+
 }
 
 .nav__item {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin: 1rem  0;
-  height: 2rem;
+  margin-bottom: 0.5rem;
+  height: 4rem;
   cursor: pointer;
   font-size: 2rem;
+  width: 100%;
+
+  &:hover {
+    opacity: 0.2;
+  }
 }
 
 
-.items-transition-enter-active, .items-transition-leave-active {
+
+.items-transition-enter-active,
+.items-transition-leave-active {
   transition: opacity .5s;
 }
-.items-transition-enter, .items-transition-leave-to {
+
+.items-transition-enter,
+.items-transition-leave-to {
   opacity: 0;
 }

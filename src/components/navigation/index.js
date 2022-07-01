@@ -80,7 +80,6 @@ export default {
                     click: () => nav_dict[item].router(this)
                 }
             }, [
-                // item,
                 h('font-awesome-icon',{
                     props: {
                         icon: nav_dict[item].icon
