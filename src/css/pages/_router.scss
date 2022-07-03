@@ -23,6 +23,7 @@
 .page_cards {
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 
 .page_card {
