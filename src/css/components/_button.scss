@@ -1,0 +1,21 @@
+.btn__a {
+  cursor: pointer;
+
+  &:link {
+
+  }
+
+  &:hover {
+    color: green;
+  }
+}
+
+.btn_active {
+
+  -webkit-user-select: none;
+
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+  }
+}

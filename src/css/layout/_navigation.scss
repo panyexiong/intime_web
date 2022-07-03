@@ -28,7 +28,7 @@
   transition: 1s;
   position: fixed;
   top: 1rem;
-  left: 1rem;
+  right: 1rem;
 
   &:hover {
     height: 80%;
@@ -59,12 +59,16 @@
   cursor: pointer;
   font-size: 2rem;
   width: 100%;
+  opacity: 0.3;
 
   &:hover {
-    opacity: 0.2;
+    opacity: 0.8;
+  }
+
+  &__selected {
+    opacity: 0.8;
   }
 }
-
 
 
 .items-transition-enter-active,

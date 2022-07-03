@@ -6,6 +6,9 @@ export default {
     computed: {
         logo_img() {
             return this.show_items ? ayst5 : ayst1;
+        },
+        route() {
+            return this.$route.name;
         }
     },
     data() {
@@ -34,7 +37,7 @@ export default {
     render(h) {
         return h('div', {
             staticClass: 'nav',
-            directives: [{ name: 'drag' }],
+            directives: [{name: 'drag'}],
             on: {
                 mouseenter: () => this.show_items = true,
                 mouseleave: () => this.show_items = false,
@@ -76,11 +79,12 @@ export default {
         render_item(h, item) {
             return h('div', {
                 staticClass: 'nav__item',
+                'class': {'nav__item__selected': this.route === item},
                 on: {
                     click: () => nav_dict[item].router(this)
                 }
             }, [
-                h('font-awesome-icon',{
+                h('font-awesome-icon', {
                     props: {
                         icon: nav_dict[item].icon
                     }
@@ -91,17 +95,21 @@ export default {
 }
 
 const nav_dict = {
-    'home': {
+    'Home': {
         router: (vm) => vm.$router.push({name: 'Home'}),
         icon: 'fa-solid fa-house'
     },
-    'money': {
+    'Money': {
         router: (vm) => vm.$router.push({name: 'Money'}),
         icon: 'fa-solid fa-sack-dollar'
     },
-    'time': {
+    'Time': {
         router: (vm) => vm.$router.push({name: 'Time'}),
         icon: 'fa-solid fa-stopwatch-20'
+    },
+    'Router': {
+        router: (vm) => vm.$router.push({name: 'Router'}),
+        icon: 'fa-solid fa-route'
     },
 }
 
