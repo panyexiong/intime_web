@@ -39,7 +39,7 @@ export default {
             return h('div', {
                 staticClass: 'btn__a',
                 on: {
-                    click: () => window.open('http://' + this.page.url, '_blank')
+                    click: () => window.open(this.page.url, '_blank')
                 }
             }, [this.page.title])
         },
